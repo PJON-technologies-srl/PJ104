@@ -1,5 +1,8 @@
 // PJ104 MQ2 gas sensor module
 
+// SoftwareBitBang timing configuration
+#define SWBB_READ_DELAY         6
+
 // PJ104 software version
 #define MODULE_VERSION          1
 // PJ104 by default accepts configuratio change
