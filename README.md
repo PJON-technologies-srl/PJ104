@@ -32,8 +32,6 @@ A basic example program is proposed to let users easily configure the PJ104s usi
 
 - `Q` For security reasons it is possible to block incoming configuration, although further configuration is possible flashing the [PJ104](software/PJ104/PJ104.ino) sketch on the ATtiny85 using an ISP programmer.
 
-The ATtiny85 must to be flashed with the [PJ104.ino](software/PJ104/PJ104.ino) sketch using an ISP programmer, see [ATtiny85 interfacing](https://github.com/gioblu/PJON/wiki/ATtiny-interfacing)
-
 ### How to upload the software
 The software is relatively easy to install:
 - Follow [High-Low Tech tutorial](http://highlowtech.org/?p=1695) by David Mellis and install the required software  
