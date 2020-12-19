@@ -34,14 +34,16 @@ uint8_t packet[3];
 bool mode;
 
 void setup() {
+  // Initial delay to avoid EEPROM corruption in case of transients
+  delay(1000);
   // Writing default configuration in EEPROM
   if(
-    EEPROM.read(4) != 'P' ||
-    EEPROM.read(5) != 'J' ||
-    EEPROM.read(6) != '1' ||
-    EEPROM.read(7) != '0' ||
-    EEPROM.read(8) != '4' ||
-    EEPROM.read(9) != MODULE_VERSION
+    EEPROM.read(3) != 'P' ||
+    EEPROM.read(4) != 'J' ||
+    EEPROM.read(5) != '1' ||
+    EEPROM.read(6) != '0' ||
+    EEPROM.read(7) != '4' ||
+    EEPROM.read(8) != MODULE_VERSION
   ) EEPROM_write_default_configuration();
   EEPROM_read_configuration();
   // Use pin 1 for PJON communicaton
@@ -81,7 +83,7 @@ void EEPROM_write_default_configuration() {
 };
 
 void loop() {
-  bus.receive(1000 + random(0, 1000));
+  bus.receive(1000);
   if(!PJON_IO_READ(MODULE_GAS_PIN)) value = true;
   if(mode && value && (bus.send_packet(recipient_id, "1", 1) == PJON_ACK)) {
     value = false;
